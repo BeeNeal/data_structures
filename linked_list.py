@@ -41,12 +41,15 @@ class LinkedList:
             prev = current
         self.head = prev
 
-    def reverseRecursively(self, head, prev=None):
-        if not head:
-            return prev
+    def reverseRecursively(self):
+        return self._reverse(self.head)
 
-            curr, head.next = head.next, prev
-            return self.reverseRecursively(curr, head)
+    def _reverse(self, node, prev=None):
+        if not node:
+            return prev
+        n = node.next
+        node.next = prev
+        return self._reverse(n, node)
 
     def printList(self):
         current = self.head
@@ -60,5 +63,6 @@ ll.append('Omar')
 ll.append('likes')
 ll.append('Brittany')
 ll.printList()
-ll.reverseRecursively(ll.head)
+ll.reverseRecursively()
+# ll.reverse()
 ll.printList()
