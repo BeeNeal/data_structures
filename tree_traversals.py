@@ -3,15 +3,15 @@
 #   4   5   
 
 
-
-class Node: 
+# Binary Tree Node
+class BTNode: 
     def __init__(self,key): 
         self.left = None
         self.right = None
         self.val = key 
   
 
-
+# Binary Tree Traversals
 def inorder(root):
     """Traverse the tree in left, root, right order. """
 
@@ -42,13 +42,44 @@ def postorder(root):
         postorder(root.right)
         print(root.val)
 
-root = Node(1)
-root.left = Node(2)
-root.right = Node(3)
-root.left.left = Node(4)
-root.left.right = Node(5)
-inorder(root)
-print('\n')
-preorder(root)
-print('\n')
-postorder(root)
+root = BTNode(1)
+root.left = BTNode(2)
+root.right = BTNode(3)
+root.left.left = BTNode(4)
+root.left.right = BTNode(5)
+# inorder(root)
+# print('\n')
+# preorder(root)
+# print('\n')
+# postorder(root)
+
+def find_max_node_in_bst(root):
+    """ """
+    current = root
+    while current.right:
+        if not current.right:
+            return root.val
+        current = current.right
+
+bt_root = BTNode(16)
+bt_root.left = BTNode(10)
+bt_root.right = BTNode(17)
+bt_root.right.right = BTNode(21)
+bt_root.left.left = BTNode(4)
+bt_root.left.right = BTNode(5)
+bt_root.left.left.left = BTNode(1)
+print(inorder(bt_root))
+print('Max val is: \n')
+print(find_max_node_in_bst(bt_root))
+
+class Node:
+
+    def __init__(self, val):
+        self.val = val
+        self.children = []
+
+# trees/graphs are made from an ordering of nodes
+
+
+
+# N-ary tree traversals
