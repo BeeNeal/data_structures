@@ -80,5 +80,21 @@ class Node:
 # trees/graphs are made from an ordering of nodes
 
 
+# find if subtree in tree
+def is_match(tree, subtree):
+    """ """
+    
+    if not(tree and subtree):
+        return tree is subtree
+    return (subtree.val == tree.val and
+            is_match(tree.left, subtree.left) and
+            is_match(tree.right, subtree.right))
 
-# N-ary tree traversals
+def is_subtree(tree, subtree):
+    """ """
+
+    if is_match(tree, subtree):
+        return True
+    if not subtree:
+        return False
+    return is_subtree(subtree.left, tree) or is_sutree(subtree.right, tree)
