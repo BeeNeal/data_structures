@@ -54,12 +54,11 @@ root.left.right = BTNode(5)
 # postorder(root)
 
 def find_max_node_in_bst(root):
-    """ """
-    current = root
-    while current.right:
-        if not current.right:
-            return root.val
-        current = current.right
+    """Return val of rightmost node, which in a BST will be the greatest num."""
+
+    while root.right:
+        root = root.right
+    return root.val
 
 bt_root = BTNode(16)
 bt_root.left = BTNode(10)
