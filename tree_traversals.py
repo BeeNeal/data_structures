@@ -83,7 +83,7 @@ class Node:
 # find if subtree in tree
 def is_match(tree, subtree):
     """ """
-    
+
     if not(tree and subtree):
         return tree is subtree
     return (subtree.val == tree.val and
@@ -98,3 +98,11 @@ def is_subtree(tree, subtree):
     if not subtree:
         return False
     return is_subtree(subtree.left, tree) or is_sutree(subtree.right, tree)
+
+
+# iterate through tree, have a dictionary 
+
+subtrees = {}
+current = self.root
+while current:
+    if
