@@ -55,8 +55,8 @@ class LinkedList:
 
 
 
-def addTwoNumbers(self, ll1, ll2):
-    """Add 2 integers in linked list format without ll integer for output."""
+def addTwoNumbers(ll1, ll2):
+    """Add 2 integers in linked list format with ll integer for output."""
 
     # with a normal list, could reverse and work backwards, and check for overflow (9 + 1)
     # but with a linked list, need to iterate through each node to arrive at
@@ -67,31 +67,11 @@ def addTwoNumbers(self, ll1, ll2):
 
     ll1.reverse()
     ll2.reverse()
-    output_ll = LinkedList()
-    overflow = False
-    while ll1.head and ll2.head:
-        combined_val = ll1.head.val + ll2.head.val
-        if combined_val > 9:
-            overflow = True
-            output_ll.insert(10 - combined_val)
-        elif overflow == True:
-            combined_val += 1
-            if combined_val < 10:
-                output_ll.insert(combined_val)
-            else:
-                output_ll.insert(0)
-                # overflow still True
-        else:
-            output_ll.insert(combined_val)
-
-
-def add(ll1, ll2):
-    ll1.reverse()
-    ll2.reverse()
     summed_int = LinkedList()
     overflow = False
     while ll1.head and ll2.head:
         combined_val = ll1.head.val + ll2.head.val
+        print(combined_val)
         if combined_val < 10 and not overflow:
             summed_int.insert(combined_val)
             overflow = False
@@ -99,12 +79,12 @@ def add(ll1, ll2):
             overflow = True
             summed_int.insert(10 - combined_val)
         elif combined_val < 10 and overflow:
-            overflow = True
+            overflow = False
             combined_val += 1
             summed_int.insert(10 - combined_val)
-        # else:  # combined_val >= 10 and overflow
-        #     overflow = True
-        #     summed_int.insert(10 - combined_val)
+        else:  # combined_val >= 10 and overflow
+            overflow = True
+            summed_int.insert(10 - combined_val + 1)
         ll1.head = ll1.head.next
         ll2.head = ll2.head.next
 
@@ -126,7 +106,7 @@ ll1.insert(3)
 ll1.insert(4)    
 ll1.insert(2)    
 ll1.printNodes()
-
+print()
 # l2 = ListNode(5)
 # l2.next = ListNode(6)
 # l2.next.next = ListNode(4)
@@ -136,5 +116,8 @@ ll2.insert(6)
 ll2.insert(5)
 ll2.printNodes()
 
-x = add(ll1, ll2)
+x = addTwoNumbers(ll1, ll2)
+print()
 x.printNodes()
+
+# issue at ssecond value - elif appears right...
