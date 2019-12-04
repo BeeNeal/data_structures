@@ -17,6 +17,15 @@ def k_frequent_elements(lst, k):
     # need to sort dictionary by values, but keep the keys
     return most_frequent
 
+def k_frequent_words(words, k):
+    """Return k most frequent words, if k is tied, lowest lexicographical word """
+
+    cnt = collections.Counter()
+    for word in words:
+        cnt[word] += 1
+    most_frequent = [word[0] for word in cnt.most_common(k) ]
+    return most_frequent
+        
 
 if __name__ == "__main__":
     import doctest
