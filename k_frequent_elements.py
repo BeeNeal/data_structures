@@ -36,19 +36,17 @@ def k_most_freq(lst, k):
     >>> print(k_most_freq([1,1,1,2,2,3, 0, 0, 0, 0], 3))
     [0, 1, 2]
     """
-    # if must use dict
+
     counts = dict()
     for item in lst:
         if item in counts:
             counts[item] += 1
         else:
             counts[item] = 1
-    newf = list(counts.items()).sort(reverse=True, key=lambda x: x[1])
-    print(newf)
-    # return newf
-
+    num_to_freq = sorted(counts.items(), reverse=True, key=lambda x: x[1])
+    return [num for num, v in num_to_freq[:k] ]
 
 if __name__ == "__main__":
     import doctest
-    if not doctest.testmod():
+    if doctest.testmod():
         print("You are one smart bumblebee!")
