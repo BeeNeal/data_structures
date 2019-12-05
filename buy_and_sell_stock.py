@@ -1,3 +1,6 @@
+# lesson learned - when might think an O(n^2) is necessary, see if you can
+# simply hold onto the current comparable value, and go down to O(n)
+
 def max_stock_profit(prices):
     """Take in list of stock prices, return max profit possible from 1 trade
     
