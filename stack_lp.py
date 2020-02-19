@@ -48,3 +48,35 @@ s.push('M')
 print(s.peek())
 
 
+def is_valid_parentheses(parentheses_string):
+    """following an open, must have another open, or it must close"""
+
+    #  Pseudo
+    # encounter opening paren - push to stack
+    # encounter closing paren - does it close top of stack? yes, continue, no
+    # return False
+
+    st = Stack()
+    paren_map = {
+        ')':'(',
+        ']':'[',
+        '}':'{' 
+        }
+    for item in parentheses_string:
+        # if item is an opening bracket, add to stack
+        if item in paren_map.values():
+            st.push(item)
+        elif item in paren_map.keys():
+            try:
+                top = st.pop()
+                if top == paren_map[item]:
+                    continue
+                else:
+                    return False
+            except:
+                return False
+        
+    if st.is_empty():
+        return True
+    return False 
+
